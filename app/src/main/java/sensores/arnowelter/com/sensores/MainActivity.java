@@ -13,6 +13,10 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements SensorEventListener{
 
     private TextView salida;
+    private float[] mGravedad;
+    private float[] mGeomagnetismo;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,20 +35,20 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             Sensor orientationSensor = listaSensores.get(0);
             sensorManager.registerListener(this, orientationSensor,SensorManager.SENSOR_DELAY_UI);
         }
-        listaSensores =
-                sensorManager.getSensorList(Sensor.TYPE_ACCELEROMETER);
+
+        listaSensores = sensorManager.getSensorList(Sensor.TYPE_ACCELEROMETER);
         if (!listaSensores.isEmpty()) {
             Sensor acelerometerSensor = listaSensores.get(0);
             sensorManager.registerListener(this, acelerometerSensor,SensorManager.SENSOR_DELAY_UI);
         }
-        listaSensores =
-                sensorManager.getSensorList(Sensor.TYPE_MAGNETIC_FIELD);
+
+        listaSensores = sensorManager.getSensorList(Sensor.TYPE_MAGNETIC_FIELD);
         if (!listaSensores.isEmpty()) {
             Sensor magneticSensor = listaSensores.get(0);
             sensorManager.registerListener(this, magneticSensor,SensorManager.SENSOR_DELAY_UI);
         }
-        listaSensores =
-                sensorManager.getSensorList(Sensor.TYPE_AMBIENT_TEMPERATURE);
+
+        listaSensores = sensorManager.getSensorList(Sensor.TYPE_AMBIENT_TEMPERATURE);
         if (!listaSensores.isEmpty()) {
             Sensor temperatureSensor = listaSensores.get(0);
             sensorManager.registerListener(this, temperatureSensor,SensorManager.SENSOR_DELAY_UI);
@@ -85,6 +89,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             }
         }
     }
+
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) { }
